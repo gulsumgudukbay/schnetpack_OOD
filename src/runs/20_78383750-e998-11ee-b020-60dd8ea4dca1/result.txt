@@ -1,0 +1,9 @@
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.018324803560972214    │
+│    test_energy_U0_rmse    │    0.04485251009464264    │
+│         test_loss         │   0.0020117477979511023   │
+└───────────────────────────┴───────────────────────────┘
+[2024-03-24 03:45:41,565][schnetpack.cli][INFO] - Best checkpoint path:
+/home/gulsum/Documents/Surrogates/schnetpack/src/runs/78383750-e998-11ee-b020-60dd8ea4dca1/checkpoints/epoch=916.ckpt

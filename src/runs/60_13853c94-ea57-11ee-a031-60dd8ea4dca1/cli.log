@@ -1,0 +1,17 @@
+[2024-03-24 22:23:40,571][schnetpack.cli][INFO] - Running on host: gulsum-Aegis-RS
+[2024-03-24 22:23:40,590][schnetpack.cli][INFO] - Seed randomly...
+[2024-03-24 22:23:40,591][schnetpack.cli][INFO] - Instantiating datamodule <schnetpack.datasets.QM9>
+[2024-03-24 22:23:40,596][schnetpack.cli][INFO] - Instantiating model <schnetpack.model.NeuralNetworkPotential>
+[2024-03-24 22:23:40,603][schnetpack.cli][INFO] - Instantiating task <schnetpack.AtomisticTask>
+[2024-03-24 22:23:40,608][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ModelCheckpoint>
+[2024-03-24 22:23:40,609][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2024-03-24 22:23:40,609][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.LearningRateMonitor>
+[2024-03-24 22:23:40,609][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ExponentialMovingAverage>
+[2024-03-24 22:23:40,610][schnetpack.cli][INFO] - Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2024-03-24 22:23:40,612][schnetpack.cli][INFO] - Instantiating trainer <pytorch_lightning.Trainer>
+[2024-03-24 22:23:40,646][schnetpack.cli][INFO] - Logging hyperparameters.
+[2024-03-24 22:23:40,676][schnetpack.cli][INFO] - Starting training.
+[2024-03-25 08:16:15,762][schnetpack.cli][INFO] - Starting testing.
+[2024-03-25 08:16:20,159][schnetpack.cli][INFO] - Best checkpoint path:
+/home/gulsum/Documents/Surrogates/schnetpack/src/runs/13853c94-ea57-11ee-a031-60dd8ea4dca1/checkpoints/epoch=933.ckpt
+[2024-03-25 08:16:20,159][schnetpack.cli][INFO] - Store best model

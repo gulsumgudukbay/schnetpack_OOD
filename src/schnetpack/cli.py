@@ -4,11 +4,10 @@ import uuid
 import tempfile
 import socket
 from typing import List
-import random
-
+import numpy as np
 import torch
 import hydra
-from omegaconf import DictConfig, OmegaConf, open_dict
+from omegaconf import DictConfig, OmegaConf
 from pytorch_lightning import LightningModule, LightningDataModule, Callback, Trainer
 from pytorch_lightning import seed_everything
 from pytorch_lightning.loggers.logger import Logger
@@ -19,16 +18,16 @@ from schnetpack.utils.script import log_hyperparameters, print_config
 from schnetpack.data import BaseAtomsData, AtomsLoader
 from schnetpack.train import PredictionWriter
 from schnetpack import properties
-from schnetpack.utils import load_model
 
+import time
 
 log = logging.getLogger(__name__)
-
 
 OmegaConf.register_new_resolver("uuid", lambda x: str(uuid.uuid1()))
 OmegaConf.register_new_resolver("tmpdir", tempfile.mkdtemp, use_cache=True)
 
 header = """
+GULSUM2
    _____      __    _   __     __  ____             __
   / ___/_____/ /_  / | / /__  / /_/ __ \____ ______/ /__
   \__ \/ ___/ __ \/  |/ / _ \/ __/ /_/ / __ `/ ___/ //_/
@@ -44,7 +43,7 @@ def train(config: DictConfig):
 
     """
     print(header)
-    log.info("Running on host: " + str(socket.gethostname()))
+    log.info("Running on host GULSUM!: " + str(socket.gethostname()))
 
     if OmegaConf.is_missing(config, "run.data_dir"):
         log.error(
@@ -55,7 +54,7 @@ def train(config: DictConfig):
     if not ("model" in config and "data" in config):
         log.error(
             f"""
-        Config incomplete! You have to specify at least `data` and `model`!
+        Config incomplete HELLO! You have to specify at least `data` and `model`!
         For an example, try one of our pre-defined experiments:
         > spktrain data_dir=/data/will/be/here +experiment=qm9
         """
@@ -89,6 +88,9 @@ def train(config: DictConfig):
         with open("config.yaml", "w") as f:
             OmegaConf.save(config, f, resolve=False)
 
+    if config.get("print_config"):
+        print_config(config, resolve=False)
+
     # Set matmul precision if specified
     if "matmul_precision" in config and config.matmul_precision is not None:
         log.info(f"Setting float32 matmul precision to <{config.matmul_precision}>")
@@ -97,15 +99,10 @@ def train(config: DictConfig):
     # Set seed for random number generators in pytorch, numpy and python.random
     if "seed" in config:
         log.info(f"Seed with <{config.seed}>")
+        seed_everything(config.seed, workers=True)
     else:
-        # choose seed randomly
-        with open_dict(config):
-            config.seed = random.randint(0, 2**32 - 1)
-        log.info(f"Seed randomly with <{config.seed}>")
-    seed_everything(seed=config.seed, workers=True)
-
-    if config.get("print_config"):
-        print_config(config, resolve=False)
+        log.info(f"Seed randomly...")
+        seed_everything(workers=True)
 
     if not os.path.exists(config.run.data_dir):
         os.makedirs(config.run.data_dir)
@@ -114,16 +111,22 @@ def train(config: DictConfig):
     log.info(f"Instantiating datamodule <{config.data._target_}>")
     datamodule: LightningDataModule = hydra.utils.instantiate(
         config.data,
-        train_sampler_cls=(
-            str2class(config.data.train_sampler_cls)
-            if config.data.train_sampler_cls
-            else None
-        ),
+        train_sampler_cls=str2class(config.data.train_sampler_cls) if config.data.train_sampler_cls else None,
     )
+    # datamodule.split_file = '/home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/splits/split_10.npz'
+    # # datamodule.split_file = '/home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/splits/split_20.npz'
+    # # datamodule.split_file = '/home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/splits/split_40.npz'
+    # # datamodule.split_file = '/home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/splits/split_60.npz'
+    # # datamodule.split_file = '/home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/splits/split_80.npz'
+    # s_file = np.load(datamodule.split_file)
+    # datamodule.num_train = len(s_file['train_idx'])
+    # datamodule.num_test = len(s_file['test_idx'])
+    # datamodule.num_val = len(s_file['val_idx'])
 
     # Init model
     log.info(f"Instantiating model <{config.model._target_}>")
-    model = hydra.utils.instantiate(config.model)
+    # model = hydra.utils.instantiate(config.model) #IGNORE
+    model = torch.load("/home/gulsum/Documents/Surrogates/schnetpack/src/runs/Train100/best_model")
 
     # Init LightningModule
     log.info(f"Instantiating task <{config.task._target_}>")
@@ -164,20 +167,158 @@ def train(config: DictConfig):
         callbacks=callbacks,
         logger=logger,
         default_root_dir=os.path.join(config.run.id),
-        _convert_="partial",
+        _convert_="partial"
+        # limit_train_batches=0.1,
+        # limit_val_batches=0.1,
+        # limit_test_batches=0.1,
+        # limit_predict_batches=0.1,
+        # max_epochs=2
     )
 
     log.info("Logging hyperparameters.")
     log_hyperparameters(config=config, model=task, trainer=trainer)
 
+########################################################################################PREV EXPS#########################################################################################
+    # #Change split files
+    train_perc = 100
+    datamodule.split_file = f'/home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/splits/split_files/split_train_{train_perc}_perc_of_nitrogen_100_perc_of_remaining_test_100_perc_of_nitrogen_100_perc_of_remaining.npz'
+
+    s_file = np.load(datamodule.split_file)
+    datamodule.num_train = len(s_file['train_idx'])
+    datamodule.num_test = len(s_file['test_idx'])
+    datamodule.num_val = len(s_file['val_idx'])
+
     # Train the model
-    log.info("Starting training.")
-    trainer.fit(model=task, datamodule=datamodule, ckpt_path=config.run.ckpt_path)
+    log.info(f"Starting training for {train_perc}% nitrogen.")
+    # trainer.fit(model=task, datamodule=datamodule) #FOR CHECKPOINT COMMENT THIS OUT
+
+    #100% N
+    # Evaluate model on test set after training
+    log.info("Starting testing for 100% nitrogen.")
+    start = time.time()
+    trainer.test(model=task, datamodule=datamodule, )
+    end = time.time()
+    log.info("Testing for 100% nitrogen took " + str(end - start) + " seconds")
+
+    #Change split files 80% N
+    datamodule.split_file = '/home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/splits/split_files/split_train_100_perc_of_nitrogen_100_perc_of_remaining_test_80_perc_of_nitrogen_100_perc_of_remaining.npz'
+    s_file = np.load(datamodule.split_file)
+    datamodule.num_train = len(s_file['train_idx'])
+    datamodule.num_test = len(s_file['test_idx'])
+    datamodule.num_val = len(s_file['val_idx'])
 
     # Evaluate model on test set after training
-    log.info("Starting testing.")
-    trainer.test(model=task, datamodule=datamodule, ckpt_path="best")
+    log.info("Starting testing for 80% nitrogen.")
+    start = time.time()
+    trainer.test(model=task, datamodule=datamodule)
+    end = time.time()
+    log.info("Testing for 80% nitrogen took " + str(end - start) + " seconds")
 
+    #Change split files 60% N
+    datamodule.split_file = '/home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/splits/split_files/split_train_100_perc_of_nitrogen_100_perc_of_remaining_test_60_perc_of_nitrogen_100_perc_of_remaining.npz'
+    s_file = np.load(datamodule.split_file)
+    datamodule.num_train = len(s_file['train_idx'])
+    datamodule.num_test = len(s_file['test_idx'])
+    datamodule.num_val = len(s_file['val_idx'])
+
+    # Evaluate model on test set after training
+    log.info("Starting testing for 60% nitrogen.")
+    start = time.time()
+    trainer.test(model=task, datamodule=datamodule)
+    end = time.time()
+    log.info("Testing for 60% nitrogen took " + str(end - start) + " seconds")
+
+    #Change split files 40% N
+    datamodule.split_file = '/home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/splits/split_files/split_train_100_perc_of_nitrogen_100_perc_of_remaining_test_40_perc_of_nitrogen_100_perc_of_remaining.npz'
+    s_file = np.load(datamodule.split_file)
+    datamodule.num_train = len(s_file['train_idx'])
+    datamodule.num_test = len(s_file['test_idx'])
+    datamodule.num_val = len(s_file['val_idx'])
+
+    # Evaluate model on test set after training
+    log.info("Starting testing for 40% nitrogen.")
+    start = time.time()
+    trainer.test(model=task, datamodule=datamodule)
+    end = time.time()
+    log.info("Testing for 40% nitrogen took " + str(end - start) + " seconds")
+
+
+    #Change split files 20% N
+    datamodule.split_file = '/home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/splits/split_files/split_train_100_perc_of_nitrogen_100_perc_of_remaining_test_20_perc_of_nitrogen_100_perc_of_remaining.npz'
+    s_file = np.load(datamodule.split_file)
+    datamodule.num_train = len(s_file['train_idx'])
+    datamodule.num_test = len(s_file['test_idx'])
+    datamodule.num_val = len(s_file['val_idx'])
+
+    # Evaluate model on test set after training
+    log.info("Starting testing for 20% nitrogen.")
+    start = time.time()
+    trainer.test(model=task, datamodule=datamodule)
+    end = time.time()
+    log.info("Testing for 20% nitrogen took " + str(end - start) + " seconds")
+
+
+    #Change split files 0% N
+    datamodule.split_file = '/home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/splits/split_files/split_train_100_perc_of_nitrogen_100_perc_of_remaining_test_0_perc_of_nitrogen_100_perc_of_remaining.npz'
+    s_file = np.load(datamodule.split_file)
+    datamodule.num_train = len(s_file['train_idx'])
+    datamodule.num_test = len(s_file['test_idx'])
+    datamodule.num_val = len(s_file['val_idx'])
+
+    # Evaluate model on test set after training
+    log.info("Starting testing for 0% nitrogen.")
+    start = time.time()
+    trainer.test(model=task, datamodule=datamodule)
+    end = time.time()
+    log.info("Testing for 0% nitrogen took " + str(end - start) + " seconds")
+
+#########################################################100########################################################
+
+    datamodule.split_file = '/home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/splits/split_files/split_train_100_perc_of_nitrogen_100_perc_of_remaining_test_100_perc_of_nitrogen_0_perc_of_remaining.npz'
+    s_file = np.load(datamodule.split_file)
+    datamodule.num_train = len(s_file['train_idx'])
+    datamodule.num_test = len(s_file['test_idx'])
+    datamodule.num_val = len(s_file['val_idx'])
+
+    # Evaluate model on test set after training
+    log.info(f"Starting testing for only nitrogen, Train {train_perc}% N." )
+    start = time.time()
+    trainer.test(model=task, datamodule=datamodule)
+    end = time.time()
+    log.info("Testing for only nitrogen took " + str(end - start) + " seconds")
+
+    # datamodule.split_file = '/home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/splits/split_test_only_nitrogens_included.npz'
+    # s_file = np.load(datamodule.split_file)
+    # datamodule.num_train = len(s_file['train_idx'])
+    # datamodule.num_test = len(s_file['test_idx'])
+    # datamodule.num_val = len(s_file['val_idx'])
+
+    # # Evaluate model on test set after training
+    # log.info("Starting testing for only nitrogen, Train 0% N.")
+    # trainer.test(model=task, datamodule=datamodule)
+
+    # # Evaluate model on test set after training
+    # log.info("Starting testing for only nitrogen, Train 20% N.")
+    # trainer.test(model=task, datamodule=datamodule)
+
+    # # Evaluate model on test set after training
+    # log.info("Starting testing for only nitrogen, Train 40% N.")
+    # trainer.test(model=task, datamodule=datamodule)
+
+    # # Evaluate model on test set after training
+    # log.info("Starting testing for only nitrogen, Train 60% N.")
+    # trainer.test(model=task, datamodule=datamodule)
+
+    # # Evaluate model on test set after training
+    # log.info("Starting testing for only nitrogen, Train 80% N.")
+    # trainer.test(model=task, datamodule=datamodule)
+
+    # # Evaluate model on test set after training
+    # log.info("Starting testing for only nitrogen, Train 100% N.")
+    # trainer.test(model=task, datamodule=datamodule)
+
+
+##########################################################################################################################################################################################
     # Store best model
     best_path = trainer.checkpoint_callback.best_model_path
     log.info(f"Best checkpoint path:\n{best_path}")
@@ -196,7 +337,7 @@ def predict(config: DictConfig):
     dataset: BaseAtomsData = hydra.utils.instantiate(config.data)
     loader = AtomsLoader(dataset, batch_size=config.batch_size, num_workers=8)
 
-    model = load_model("best_model")
+    model = torch.load("best_model")
 
     class WrapperLM(LightningModule):
         def __init__(self, model, enable_grad=config.enable_grad):
@@ -214,14 +355,13 @@ def predict(config: DictConfig):
             results = {k: v.detach().cpu() for k, v in results.items()}
             return results
 
+
     log.info(f"Instantiating trainer <{config.trainer._target_}>")
     trainer: Trainer = hydra.utils.instantiate(
         config.trainer,
         callbacks=[
             PredictionWriter(
-                output_dir=config.outputdir,
-                write_interval=config.write_interval,
-                write_idx=config.write_idx_m,
+                output_dir=config.outputdir, write_interval=config.write_interval, write_idx=config.write_idx_m
             )
         ],
         default_root_dir=".",

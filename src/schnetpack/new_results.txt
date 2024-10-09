@@ -1,0 +1,575 @@
+[2024-05-05 15:35:53,587][schnetpack.cli][INFO] - Starting training for 0% nitrogen.
+You are using a CUDA device ('NVIDIA GeForce RTX 3060 Ti') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name    | Type                   | Params
+---------------------------------------------------
+0 | model   | NeuralNetworkPotential | 589 K 
+1 | outputs | ModuleList             | 0     
+---------------------------------------------------
+589 K     Trainable params
+0         Non-trainable params
+589 K     Total params
+2.357     Total estimated model params size (MB)
+Epoch 728: 100%|████████████████████████████████████████████████████████████████████████████████████| 427/427 [00:19<00:00, 22.19it/s, v_num=0, val_loss=0.000699]
+[2024-05-05 19:26:38,313][schnetpack.cli][INFO] - Starting testing for 100% nitrogen.                                                                             
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 29.08it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │    0.03975677490234375    │
+│    test_energy_U0_rmse    │    0.16213029623031616    │
+│         test_loss         │   0.026286235079169273    │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-05 19:26:42,617][schnetpack.cli][INFO] - Starting testing for 80% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 28.28it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.039756789803504944    │
+│    test_energy_U0_rmse    │    0.16213029623031616    │
+│         test_loss         │   0.026286235079169273    │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-05 19:26:47,055][schnetpack.cli][INFO] - Starting testing for 60% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 29.54it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.039756789803504944    │
+│    test_energy_U0_rmse    │    0.16213034093379974    │
+│         test_loss         │    0.02628624625504017    │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-05 19:26:51,415][schnetpack.cli][INFO] - Starting testing for 40% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 30.91it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │    0.03975677117705345    │
+│    test_energy_U0_rmse    │    0.16213032603263855    │
+│         test_loss         │    0.02628624066710472    │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-05 19:26:55,613][schnetpack.cli][INFO] - Starting testing for 20% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 29.31it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │    0.03975676745176315    │
+│    test_energy_U0_rmse    │    0.16213029623031616    │
+│         test_loss         │   0.026286233216524124    │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-05 19:26:59,946][schnetpack.cli][INFO] - Starting testing for 0% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:04<00:00, 27.15it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │    0.03975679352879524    │
+│    test_energy_U0_rmse    │    0.16213029623031616    │
+│         test_loss         │   0.026286233216524124    │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-05 19:27:04,501][schnetpack.cli][INFO] - Starting testing for only nitrogen, Train 0% N.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 28.96it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │    0.03975677862763405    │
+│    test_energy_U0_rmse    │    0.16213029623031616    │
+│         test_loss         │   0.026286235079169273    │
+└───────────────────────────┴───────────────────────────┘
+
+
+
+
+
+
+
+
+[2024-05-05 20:50:46,657][schnetpack.cli][INFO] - Seed randomly...
+/home/gulsum/.local/lib/python3.10/site-packages/lightning_fabric/utilities/seed.py:40: No seed found, seed set to 2763541170
+Seed set to 2763541170
+[2024-05-05 20:50:46,658][schnetpack.cli][INFO] - Instantiating datamodule <schnetpack.datasets.QM9>
+[2024-05-05 20:50:46,663][schnetpack.cli][INFO] - Instantiating model <schnetpack.model.NeuralNetworkPotential>
+[2024-05-05 20:50:46,671][schnetpack.cli][INFO] - Instantiating task <schnetpack.AtomisticTask>
+/home/gulsum/.local/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'model' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['model'])`.
+[2024-05-05 20:50:46,684][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ModelCheckpoint>
+[2024-05-05 20:50:46,685][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2024-05-05 20:50:46,686][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.LearningRateMonitor>
+[2024-05-05 20:50:46,686][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ExponentialMovingAverage>
+[2024-05-05 20:50:46,686][schnetpack.cli][INFO] - Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2024-05-05 20:50:46,696][schnetpack.cli][INFO] - Instantiating trainer <pytorch_lightning.Trainer>
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+`Trainer(limit_train_batches=1.0)` was configured so 100% of the batches per epoch will be used..
+`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..
+`Trainer(limit_test_batches=1.0)` was configured so 100% of the batches will be used..
+`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
+[2024-05-05 20:50:46,773][schnetpack.cli][INFO] - Logging hyperparameters.
+[2024-05-05 20:50:46,811][schnetpack.cli][INFO] - Starting training for 20% nitrogen.
+You are using a CUDA device ('NVIDIA GeForce RTX 3060 Ti') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name    | Type                   | Params
+---------------------------------------------------
+0 | model   | NeuralNetworkPotential | 589 K 
+1 | outputs | ModuleList             | 0     
+---------------------------------------------------
+589 K     Trainable params
+0         Non-trainable params
+589 K     Total params
+2.357     Total estimated model params size (MB)
+Epoch 1090: 100%|███████████████████████████████████████████████████████████████████████████████████| 562/562 [00:24<00:00, 22.73it/s, v_num=0, val_loss=0.000456]
+[2024-05-06 04:19:00,416][schnetpack.cli][INFO] - Starting testing for 100% nitrogen.                                                                             
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 27.97it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.011984573677182198    │
+│    test_energy_U0_rmse    │    0.03822465240955353    │
+│         test_loss         │   0.0014611240476369858   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-06 04:19:04,865][schnetpack.cli][INFO] - Starting testing for 80% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 28.67it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │    0.01198458019644022    │
+│    test_energy_U0_rmse    │    0.03822466358542442    │
+│         test_loss         │   0.0014611250953748822   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-06 04:19:09,325][schnetpack.cli][INFO] - Starting testing for 60% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 28.34it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.011984574608504772    │
+│    test_energy_U0_rmse    │    0.03822464868426323    │
+│         test_loss         │   0.0014611236983910203   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-06 04:19:13,667][schnetpack.cli][INFO] - Starting testing for 40% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 29.67it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.011984576471149921    │
+│    test_energy_U0_rmse    │   0.038224656134843826    │
+│         test_loss         │   0.0014611242804676294   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-06 04:19:17,935][schnetpack.cli][INFO] - Starting testing for 20% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:04<00:00, 24.32it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.011984587647020817    │
+│    test_energy_U0_rmse    │   0.038224659860134125    │
+│         test_loss         │   0.0014611247461289167   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-06 04:19:23,017][schnetpack.cli][INFO] - Starting testing for 0% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 27.51it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.011984584853053093    │
+│    test_energy_U0_rmse    │    0.03822464868426323    │
+│         test_loss         │   0.0014611236983910203   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-06 04:19:27,689][schnetpack.cli][INFO] - Starting testing for only nitrogen, Train 20% N.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 29.40it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │    0.01198458019644022    │
+│    test_energy_U0_rmse    │    0.03822465240955353    │
+│         test_loss         │   0.0014611240476369858   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-06 04:19:32,006][schnetpack.cli][INFO] - Best checkpoint path:
+checkpoints/epoch=890.ckpt
+[2024-05-06 04:19:32,006][schnetpack.cli][INFO] - Store best model
+/home/gulsum/.local/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'model' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['model'])`.
+[2024-05-06 04:19:32,156][schnetpack.cli][INFO] - Best model stored at /home/gulsum/Documents/Surrogates/schnetpack/src/runs/0e8adf54-0b4b-11ef-b372-fd2c5bc4aa39/best_model
+
+
+
+
+
+
+
+[2024-05-06 09:04:51,129][schnetpack.cli][INFO] - Starting training for 40% nitrogen.
+You are using a CUDA device ('NVIDIA GeForce RTX 3060 Ti') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name    | Type                   | Params
+---------------------------------------------------
+0 | model   | NeuralNetworkPotential | 589 K 
+1 | outputs | ModuleList             | 0     
+---------------------------------------------------
+589 K     Trainable params
+0         Non-trainable params
+589 K     Total params
+2.357     Total estimated model params size (MB)
+Epoch 1263: 100%|██████████████████████████████████████████| 696/696 [00:29<00:00, 23.59it/s, v_num=0, val_loss=0.000311]
+[2024-05-06 19:48:42,975][schnetpack.cli][INFO] - Starting testing for 100% nitrogen.                                    
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 27.86it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.010116707533597946    │
+│    test_energy_U0_rmse    │    0.03674619272351265    │
+│         test_loss         │   0.0013502826914191246   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-06 19:48:47,396][schnetpack.cli][INFO] - Starting testing for 80% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 27.84it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.010116713121533394    │
+│    test_energy_U0_rmse    │    0.03674620762467384    │
+│         test_loss         │   0.001350283739157021    │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-06 19:48:52,017][schnetpack.cli][INFO] - Starting testing for 60% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 29.11it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.010116717778146267    │
+│    test_energy_U0_rmse    │   0.036746203899383545    │
+│         test_loss         │   0.0013502836227416992   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-06 19:48:56,361][schnetpack.cli][INFO] - Starting testing for 40% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 29.84it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.010116702876985073    │
+│    test_energy_U0_rmse    │    0.03674619644880295    │
+│         test_loss         │   0.0013502829242497683   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-06 19:49:00,668][schnetpack.cli][INFO] - Starting testing for 20% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 28.05it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.010116719640791416    │
+│    test_energy_U0_rmse    │    0.03674620762467384    │
+│         test_loss         │   0.001350283739157021    │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-06 19:49:05,137][schnetpack.cli][INFO] - Starting testing for 0% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 28.86it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.010116705670952797    │
+│    test_energy_U0_rmse    │   0.036746200174093246    │
+│         test_loss         │   0.0013502832734957337   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-06 19:49:09,502][schnetpack.cli][INFO] - Starting testing for only nitrogen, Train 40% N.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 28.77it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.010116709396243095    │
+│    test_energy_U0_rmse    │    0.03674618899822235    │
+│         test_loss         │   0.001350282458588481    │
+└───────────────────────────┴───────────────────────────┘
+
+
+
+
+[2024-05-07 02:55:44,712][schnetpack.cli][INFO] - Starting training for 60% nitrogen.
+You are using a CUDA device ('NVIDIA GeForce RTX 3060 Ti') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name    | Type                   | Params
+---------------------------------------------------
+0 | model   | NeuralNetworkPotential | 589 K 
+1 | outputs | ModuleList             | 0     
+---------------------------------------------------
+589 K     Trainable params
+0         Non-trainable params
+589 K     Total params
+2.357     Total estimated model params size (MB)
+Epoch 1386: 100%|██████████████████████| 831/831 [00:35<00:00, 23.63it/s, v_num=0, val_loss=0.000305]
+[2024-05-07 16:44:29,868][schnetpack.cli][INFO] - Starting testing for 100% nitrogen.                
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████| 109/109 [00:03<00:00, 28.97it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.008990616537630558    │
+│    test_energy_U0_rmse    │    0.03406411409378052    │
+│         test_loss         │   0.0011603638995438814   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-07 16:44:34,269][schnetpack.cli][INFO] - Starting testing for 80% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████| 109/109 [00:03<00:00, 29.59it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.008990605361759663    │
+│    test_energy_U0_rmse    │   0.034064117819070816    │
+│         test_loss         │   0.001160364248789847    │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-07 16:44:38,675][schnetpack.cli][INFO] - Starting testing for 60% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████| 109/109 [00:03<00:00, 29.29it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │    0.00899061281234026    │
+│    test_energy_U0_rmse    │    0.03406412899494171    │
+│         test_loss         │   0.001160364830866456    │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-07 16:44:42,957][schnetpack.cli][INFO] - Starting testing for 40% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████| 109/109 [00:03<00:00, 28.88it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.008990607224404812    │
+│    test_energy_U0_rmse    │    0.03406414017081261    │
+│         test_loss         │   0.001160365529358387    │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-07 16:44:47,440][schnetpack.cli][INFO] - Starting testing for 20% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████| 109/109 [00:03<00:00, 29.73it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.008990613743662834    │
+│    test_energy_U0_rmse    │    0.03406411409378052    │
+│         test_loss         │   0.0011603638995438814   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-07 16:44:51,707][schnetpack.cli][INFO] - Starting testing for 0% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████| 109/109 [00:03<00:00, 30.84it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.008990614674985409    │
+│    test_energy_U0_rmse    │   0.034064121544361115    │
+│         test_loss         │   0.0011603645980358124   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-07 16:44:56,002][schnetpack.cli][INFO] - Starting testing for only nitrogen, Train 60% N.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████| 109/109 [00:03<00:00, 32.18it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.008990607224404812    │
+│    test_energy_U0_rmse    │    0.03406412526965141    │
+│         test_loss         │   0.0011603645980358124   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-07 16:44:59,924][schnetpack.cli][INFO] - Best checkpoint path:
+checkpoints/epoch=1186.ckpt
+[2024-05-07 16:44:59,924][schnetpack.cli][INFO] - Store best model
+/home/gulsum/.local/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'model' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['model'])`.
+[2024-05-07 16:45:00,007][schnetpack.cli][INFO] - Best model stored at /home/gulsum/Documents/Surrogates/schnetpack/src/runs/3521ed40-0c47-11ef-b372-fd2c5bc4aa39/best_model
+
+
+[2024-05-08 23:07:59,276][schnetpack.cli][INFO] - Starting training for 80% nitrogen.
+You are using a CUDA device ('NVIDIA GeForce RTX 3060 Ti') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name    | Type                   | Params
+---------------------------------------------------
+0 | model   | NeuralNetworkPotential | 589 K 
+1 | outputs | ModuleList             | 0     
+---------------------------------------------------
+589 K     Trainable params
+0         Non-trainable params
+589 K     Total params
+2.357     Total estimated model params size (MB)
+Epoch 761: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 966/966 [00:40<00:00, 23.71it/s, v_num=0, val_loss=0.000448]
+[2024-05-09 07:38:45,571][schnetpack.cli][INFO] - Starting testing for 100% nitrogen.                                                                                                                                                                                                                                                         
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 29.28it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.007847072556614876    │
+│    test_energy_U0_rmse    │   0.029934806749224663    │
+│         test_loss         │   0.0008960926788859069   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-09 07:38:49,989][schnetpack.cli][INFO] - Starting testing for 80% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 29.13it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.007847060449421406    │
+│    test_energy_U0_rmse    │   0.029934806749224663    │
+│         test_loss         │   0.0008960926788859069   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-09 07:38:54,357][schnetpack.cli][INFO] - Starting testing for 60% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:04<00:00, 26.79it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.007847069762647152    │
+│    test_energy_U0_rmse    │    0.02993481047451496    │
+│         test_loss         │   0.0008960928535088897   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-09 07:38:58,928][schnetpack.cli][INFO] - Starting testing for 40% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 27.71it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.007847066037356853    │
+│    test_energy_U0_rmse    │   0.029934799298644066    │
+│         test_loss         │   0.0008960921550169587   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-09 07:39:03,645][schnetpack.cli][INFO] - Starting testing for 20% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 30.54it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.007847072556614876    │
+│    test_energy_U0_rmse    │   0.029934801161289215    │
+│         test_loss         │   0.0008960921550169587   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-09 07:39:07,903][schnetpack.cli][INFO] - Starting testing for 0% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 27.64it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.007847074419260025    │
+│    test_energy_U0_rmse    │    0.02993481047451496    │
+│         test_loss         │   0.0008960927953012288   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-09 07:39:12,402][schnetpack.cli][INFO] - Starting testing for only nitrogen, Train 80% N.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 28.26it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.007847072556614876    │
+│    test_energy_U0_rmse    │    0.02993481419980526    │
+│         test_loss         │   0.0008960931445471942   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-09 07:39:16,907][schnetpack.cli][INFO] - Best checkpoint path:
+checkpoints/epoch=561.ckpt
+[2024-05-09 07:39:16,907][schnetpack.cli][INFO] - Store best model
+/home/gulsum/.local/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'model' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['model'])`.
+[2024-05-09 07:39:17,053][schnetpack.cli][INFO] - Best model stored at /home/gulsum/Documents/Surrogates/schnetpack/src/runs/b8ba328e-0db9-11ef-b372-fd2c5bc4aa39/best_model
+
+
+[2024-05-08 10:48:29,247][schnetpack.cli][INFO] - Starting training for 100% nitrogen.                                                                                                                                                                                                                                                        
+You are using a CUDA device ('NVIDIA GeForce RTX 3060 Ti') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#to
+rch.set_float32_matmul_precision                                                                                                                                                                                                                                                                                                              
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]                                                                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                                                                                              
+  | Name    | Type                   | Params                                                                                                                                                                                                                                                                                                 
+---------------------------------------------------                                                                                                                                                                                                                                                                                           
+0 | model   | NeuralNetworkPotential | 589 K                                                                                                                                                                                                                                                                                                  
+1 | outputs | ModuleList             | 0                                                                                                                                                                                                                                                                                                      
+---------------------------------------------------                                                                                                                                                                                                                                                                                           
+589 K     Trainable params                                                                                                                                                                                                                                                                                                                    
+0         Non-trainable params                                                                                                                                                                                                                                                                                                                
+589 K     Total params                                                                                                                                                                                                                                                                                                                        
+2.357     Total estimated model params size (MB)      
+███████████████████████████████████████████████████████████████████████████████████████▍                             | 890/1100 [00:34<00:08, 25.92it/s, v_num=0, val_loss=0.000521]Epoch 75:  83%|███████████████████████████████████████████████████████████████████████████████████████████
+██████████████████████████████████████▏                         | 917/1100 [00:35<00:07, 25.89it/s, v_num=0, val_loss=0.000521]Epoch 75:  83%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎              
+           | 918/1100 [00:35<00:07, 25.89it/s, v_num=0, val_loss=0.000521]Epoch 79:  37%|█████████████████████████████████████████████████████████▏                                                                                                 | 406/1100 [00:15<00:26, 26.12it/s, v_num=
+0, val_loss=0.000493]Epoch 631: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1100/1100 [00:45<00:00, 24.23it/s, v_num=0, val_loss=0.00031]Epoch 632:   0%|                
+                                                                                                                                                     | 0/1100 [00:00<?, ?it/s, v_num=0, val_loss=0.00031]Epoch 709: 100%|█████████████████████████████████████████████████████████████████████
+████████████████████████████████████████████████████████████████████████████████████| 1100/1100 [00:45<00:00, 24.37it/s, v_num=0, val_loss=0.000307]                                                                                                                                          
+[2024-05-08 19:44:47,717][schnetpack.cli][INFO] - Starting testing for 100% nitrogen.                                                                                                                                                                                                         
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]                                                                                                                                                                                                                                                     
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 29.86it/s]                                                     
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓                                                                                                                                                                                                                                     
+┃        Test metric        ┃       DataLoader 0        ┃                                                                                                                                                                                                                                     
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩                                                                                                                                                                                                                                     
+│    test_energy_U0_mae     │    0.0061573158018291     │                                                                                                                                                                                                                                     
+│    test_energy_U0_rmse    │    0.02424365095794201    │                                                                                                                                                                                                                                     
+│         test_loss         │   0.000587754650041461    │                                                                                                                                                                                                                                     
+└───────────────────────────┴───────────────────────────┘                                                                                                                                                                                                                                     
+[2024-05-08 19:44:51,955][schnetpack.cli][INFO] - Starting testing for 80% nitrogen.                                                                                                                                                                                                          
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]                                                                                                                                                                                                                                                     
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 28.88it/s]                                                     
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓                                                                                                                                                                                                                                     
+┃        Test metric        ┃       DataLoader 0        ┃                                                                                                                                                                                                                                     
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩                                                                                                                                                                                                                                     
+│    test_energy_U0_mae     │   0.006157305091619492    │                                                                                                                                                                                                                                     
+│    test_energy_U0_rmse    │    0.02424364537000656    │                                                                                                                                                                                                                                     
+│         test_loss         │   0.0005877544172108173   │                                                                                                                                                                                                                                     
+└───────────────────────────┴───────────────────────────┘                                                                                                                                                                                                                                     
+[2024-05-08 19:44:56,479][schnetpack.cli][INFO] - Starting testing for 60% nitrogen.                                                                                                                                                                                                          
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]                                                                                                                                                                                                                                                     
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 29.06it/s]                                                     
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓                                                                                                                                                                                                                                     
+┃        Test metric        ┃       DataLoader 0        ┃                                                                                                                                                                                                                                     
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩              
+│    test_energy_U0_mae     │   0.0061573125422000885   │              
+│    test_energy_U0_rmse    │   0.024243656545877457    │              
+│         test_loss         │   0.0005877548828721046   │              
+└───────────────────────────┴───────────────────────────┘     
+[2024-05-08 19:45:00,743][schnetpack.cli][INFO] - Starting testing for 40% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 29.89it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.006157316733151674    │
+│    test_energy_U0_rmse    │   0.024243660271167755    │
+│         test_loss         │   0.0005877550574950874   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-08 19:45:04,965][schnetpack.cli][INFO] - Starting testing for 20% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 31.13it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.006157319527119398    │
+│    test_energy_U0_rmse    │   0.024243654683232307    │
+│         test_loss         │   0.0005877548246644437   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-08 19:45:09,087][schnetpack.cli][INFO] - Starting testing for 0% nitrogen.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 28.48it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.006157317198812962    │
+│    test_energy_U0_rmse    │   0.024243663996458054    │
+│         test_loss         │   0.0005877552321180701   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-08 19:45:13,534][schnetpack.cli][INFO] - Starting testing for only nitrogen, Train 100% N.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 30.97it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.006157319527119398    │
+│    test_energy_U0_rmse    │   0.024243660271167755    │
+│         test_loss         │   0.0005877550574950874   │
+└───────────────────────────┴───────────────────────────┘
+[2024-05-08 19:45:17,883][schnetpack.cli][INFO] - Best checkpoint path:
+checkpoints/epoch=509.ckpt
+[2024-05-08 19:45:17,883][schnetpack.cli][INFO] - Store best model
+/home/gulsum/.local/lib/python3.10/site-packages/pytorch_lightning/utilities/parsing.py:198: Attribute 'model' is an instance of `nn.Module` and is already saved during checkpointing. It is recommended to ignore them using `self.save_hyperparameters(ignore=['model'])`.
+[2024-05-08 19:45:18,029][schnetpack.cli][INFO] - Best model stored at /home/gulsum/Documents/Surrogates/schnetpack/src/runs/6a16d1ee-0d52-11ef-b372-fd2c5bc4aa39/best_model

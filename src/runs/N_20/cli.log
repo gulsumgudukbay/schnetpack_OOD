@@ -1,0 +1,21 @@
+[2024-04-24 08:39:05,543][schnetpack.cli][INFO] - Running on host GULSUM: gulsum-Aegis-RS
+[2024-04-24 08:39:05,566][schnetpack.cli][INFO] - Seed randomly...
+[2024-04-24 08:39:05,568][schnetpack.cli][INFO] - Instantiating datamodule <schnetpack.datasets.QM9>
+[2024-04-24 08:39:05,573][schnetpack.cli][INFO] - Instantiating model <schnetpack.model.NeuralNetworkPotential>
+[2024-04-24 08:39:05,580][schnetpack.cli][INFO] - Instantiating task <schnetpack.AtomisticTask>
+[2024-04-24 08:39:05,585][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ModelCheckpoint>
+[2024-04-24 08:39:05,586][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2024-04-24 08:39:05,587][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.LearningRateMonitor>
+[2024-04-24 08:39:05,587][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ExponentialMovingAverage>
+[2024-04-24 08:39:05,587][schnetpack.cli][INFO] - Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2024-04-24 08:39:05,593][schnetpack.cli][INFO] - Instantiating trainer <pytorch_lightning.Trainer>
+[2024-04-24 08:39:05,655][schnetpack.cli][INFO] - Logging hyperparameters.
+[2024-04-24 08:39:05,687][schnetpack.cli][INFO] - Starting training for 20% nitrogen.
+[2024-04-24 16:19:02,864][schnetpack.cli][INFO] - Starting testing for 100% nitrogen.
+[2024-04-24 16:19:07,524][schnetpack.cli][INFO] - Starting testing for 75% nitrogen.
+[2024-04-24 16:19:12,348][schnetpack.cli][INFO] - Starting testing for 50% nitrogen.
+[2024-04-24 16:19:17,198][schnetpack.cli][INFO] - Starting testing for 25% nitrogen.
+[2024-04-24 16:19:21,841][schnetpack.cli][INFO] - Starting testing for 0% nitrogen.
+[2024-04-24 16:19:26,745][schnetpack.cli][INFO] - Best checkpoint path:
+checkpoints/epoch=784.ckpt
+[2024-04-24 16:19:26,745][schnetpack.cli][INFO] - Store best model

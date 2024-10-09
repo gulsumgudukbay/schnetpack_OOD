@@ -1,0 +1,20 @@
+---------------------------------------------------
+589 K     Trainable params
+0         Non-trainable params
+589 K     Total params
+2.356     Total estimated model params size (MB)
+Epoch 1133: 100%|███████████████████████████████████████████████████████████████████| 660/660 [00:31<00:00, 20.82it/s, v_num=0, val_loss=0.000434]
+[2024-03-25 08:16:15,762][schnetpack.cli][INFO] - Starting testing.                                                                               
+Restoring states from the checkpoint path at /home/gulsum/Documents/Surrogates/schnetpack/src/runs/13853c94-ea57-11ee-a031-60dd8ea4dca1/checkpoints/epoch=933.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /home/gulsum/Documents/Surrogates/schnetpack/src/runs/13853c94-ea57-11ee-a031-60dd8ea4dca1/checkpoints/epoch=933.ckpt
+Testing DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 29.03it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.009214606136083603    │
+│    test_energy_U0_rmse    │    0.03456876799464226    │
+│         test_loss         │   0.0011949996696785092   │
+└───────────────────────────┴───────────────────────────┘
+[2024-03-25 08:16:20,159][schnetpack.cli][INFO] - Best checkpoint path:
+/home/gulsum/Documents/Surrogates/schnetpack/src/runs/13853c94-ea57-11ee-a031-60dd8ea4dca1/checkpoints/epoch=933.ckpt

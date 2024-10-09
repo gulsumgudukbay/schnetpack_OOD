@@ -1,0 +1,24 @@
+[2024-08-29 22:43:40,908][schnetpack.cli][INFO] - Running on host GULSUM!: gulsum-Aegis-RS
+[2024-08-29 22:43:40,932][schnetpack.cli][INFO] - Seed randomly...
+[2024-08-29 22:43:40,933][schnetpack.cli][INFO] - Instantiating datamodule <schnetpack.datasets.QM9>
+[2024-08-29 22:43:40,938][schnetpack.cli][INFO] - Instantiating model <schnetpack.model.NeuralNetworkPotential>
+[2024-08-29 22:43:41,016][schnetpack.cli][INFO] - Instantiating task <schnetpack.AtomisticTask>
+[2024-08-29 22:43:41,025][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ModelCheckpoint>
+[2024-08-29 22:43:41,026][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2024-08-29 22:43:41,026][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.LearningRateMonitor>
+[2024-08-29 22:43:41,027][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ExponentialMovingAverage>
+[2024-08-29 22:43:41,027][schnetpack.cli][INFO] - Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2024-08-29 22:43:41,033][schnetpack.cli][INFO] - Instantiating trainer <pytorch_lightning.Trainer>
+[2024-08-29 22:43:41,082][schnetpack.cli][INFO] - Logging hyperparameters.
+[2024-08-29 22:43:41,114][schnetpack.cli][INFO] - Starting training for 0% nitrogen.
+[2024-08-29 22:43:41,114][schnetpack.cli][INFO] - Starting testing for 100% nitrogen.
+[2024-08-29 22:43:50,170][schnetpack.cli][INFO] - Testing for 100% nitrogen took 9.056748867034912 seconds
+[2024-08-29 22:43:50,172][schnetpack.cli][INFO] - Starting testing for 80% nitrogen.
+[2024-08-29 22:43:54,223][schnetpack.cli][INFO] - Starting testing for 60% nitrogen.
+[2024-08-29 22:43:58,076][schnetpack.cli][INFO] - Starting testing for 40% nitrogen.
+[2024-08-29 22:44:02,099][schnetpack.cli][INFO] - Starting testing for 20% nitrogen.
+[2024-08-29 22:44:06,271][schnetpack.cli][INFO] - Starting testing for 0% nitrogen.
+[2024-08-29 22:44:10,565][schnetpack.cli][INFO] - Starting testing for only nitrogen, Train 0% N.
+[2024-08-29 22:44:14,487][schnetpack.cli][INFO] - Best checkpoint path:
+
+[2024-08-29 22:44:14,487][schnetpack.cli][INFO] - Store best model

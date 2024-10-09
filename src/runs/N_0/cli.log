@@ -1,0 +1,32 @@
+[2024-04-23 23:20:36,159][schnetpack.cli][INFO] - Running on host GULSUM: gulsum-Aegis-RS
+[2024-04-23 23:20:36,182][schnetpack.cli][INFO] - Seed randomly...
+[2024-04-23 23:20:36,184][schnetpack.cli][INFO] - Instantiating datamodule <schnetpack.datasets.QM9>
+[2024-04-23 23:20:36,189][schnetpack.cli][INFO] - Instantiating model <schnetpack.model.NeuralNetworkPotential>
+[2024-04-23 23:20:36,196][schnetpack.cli][INFO] - Instantiating task <schnetpack.AtomisticTask>
+[2024-04-23 23:20:36,201][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ModelCheckpoint>
+[2024-04-23 23:20:36,202][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2024-04-23 23:20:36,202][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.LearningRateMonitor>
+[2024-04-23 23:20:36,203][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ExponentialMovingAverage>
+[2024-04-23 23:20:36,203][schnetpack.cli][INFO] - Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2024-04-23 23:20:36,209][schnetpack.cli][INFO] - Instantiating trainer <pytorch_lightning.Trainer>
+[2024-04-23 23:20:36,269][schnetpack.cli][INFO] - Logging hyperparameters.
+[2024-04-23 23:20:36,301][schnetpack.cli][INFO] - Starting training for 0% nitrogen.
+[2024-04-23 23:20:36,466][root][INFO] - Downloading GDB-9 atom references...
+[2024-04-23 23:20:37,713][root][INFO] - Done.
+[2024-04-23 23:20:37,758][root][INFO] - Downloading list of uncharacterized molecules...
+[2024-04-23 23:20:40,077][root][INFO] - Done.
+[2024-04-23 23:20:40,079][root][INFO] - Downloading GDB-9 data...
+[2024-04-23 23:20:50,898][root][INFO] - Done.
+[2024-04-23 23:20:50,899][root][INFO] - Extracting files...
+[2024-04-23 23:21:02,528][root][INFO] - Done.
+[2024-04-23 23:21:02,529][root][INFO] - Parse xyz files...
+[2024-04-23 23:21:48,816][root][INFO] - Write atoms to db...
+[2024-04-23 23:22:12,241][root][INFO] - Done.
+[2024-04-24 01:30:45,178][schnetpack.cli][INFO] - Starting testing for 100% nitrogen.
+[2024-04-24 01:30:49,751][schnetpack.cli][INFO] - Starting testing for 75% nitrogen.
+[2024-04-24 01:30:54,623][schnetpack.cli][INFO] - Starting testing for 50% nitrogen.
+[2024-04-24 01:30:59,248][schnetpack.cli][INFO] - Starting testing for 25% nitrogen.
+[2024-04-24 01:31:04,298][schnetpack.cli][INFO] - Starting testing for 0% nitrogen.
+[2024-04-24 01:31:09,489][schnetpack.cli][INFO] - Best checkpoint path:
+checkpoints/epoch=149.ckpt
+[2024-04-24 01:31:09,489][schnetpack.cli][INFO] - Store best model

@@ -1,0 +1,24 @@
+[2024-05-05 20:50:46,633][schnetpack.cli][INFO] - Running on host GULSUM: gulsum-Aegis-RS
+[2024-05-05 20:50:46,657][schnetpack.cli][INFO] - Seed randomly...
+[2024-05-05 20:50:46,658][schnetpack.cli][INFO] - Instantiating datamodule <schnetpack.datasets.QM9>
+[2024-05-05 20:50:46,663][schnetpack.cli][INFO] - Instantiating model <schnetpack.model.NeuralNetworkPotential>
+[2024-05-05 20:50:46,671][schnetpack.cli][INFO] - Instantiating task <schnetpack.AtomisticTask>
+[2024-05-05 20:50:46,684][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ModelCheckpoint>
+[2024-05-05 20:50:46,685][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2024-05-05 20:50:46,686][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.LearningRateMonitor>
+[2024-05-05 20:50:46,686][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ExponentialMovingAverage>
+[2024-05-05 20:50:46,686][schnetpack.cli][INFO] - Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2024-05-05 20:50:46,696][schnetpack.cli][INFO] - Instantiating trainer <pytorch_lightning.Trainer>
+[2024-05-05 20:50:46,773][schnetpack.cli][INFO] - Logging hyperparameters.
+[2024-05-05 20:50:46,811][schnetpack.cli][INFO] - Starting training for 20% nitrogen.
+[2024-05-06 04:19:00,416][schnetpack.cli][INFO] - Starting testing for 100% nitrogen.
+[2024-05-06 04:19:04,865][schnetpack.cli][INFO] - Starting testing for 80% nitrogen.
+[2024-05-06 04:19:09,325][schnetpack.cli][INFO] - Starting testing for 60% nitrogen.
+[2024-05-06 04:19:13,667][schnetpack.cli][INFO] - Starting testing for 40% nitrogen.
+[2024-05-06 04:19:17,935][schnetpack.cli][INFO] - Starting testing for 20% nitrogen.
+[2024-05-06 04:19:23,017][schnetpack.cli][INFO] - Starting testing for 0% nitrogen.
+[2024-05-06 04:19:27,689][schnetpack.cli][INFO] - Starting testing for only nitrogen, Train 20% N.
+[2024-05-06 04:19:32,006][schnetpack.cli][INFO] - Best checkpoint path:
+checkpoints/epoch=890.ckpt
+[2024-05-06 04:19:32,006][schnetpack.cli][INFO] - Store best model
+[2024-05-06 04:19:32,156][schnetpack.cli][INFO] - Best model stored at /home/gulsum/Documents/Surrogates/schnetpack/src/runs/0e8adf54-0b4b-11ef-b372-fd2c5bc4aa39/best_model

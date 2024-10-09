@@ -1,0 +1,14 @@
+[2024-04-05 02:14:14,032][schnetpack.cli][INFO] - Starting testing.                                                                                                                                                                                                             
+Restoring states from the checkpoint path at /home/gulsum/Documents/Surrogates/schnetpack/src/runs/290afa64-f2bc-11ee-bdba-60dd8ea4dca1/checkpoints/epoch=619.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /home/gulsum/Documents/Surrogates/schnetpack/src/runs/290afa64-f2bc-11ee-bdba-60dd8ea4dca1/checkpoints/epoch=619.ckpt
+Testing DataLoader 0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 109/109 [00:03<00:00, 28.78it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.006715035066008568    │
+│    test_energy_U0_rmse    │    0.01395577285438776    │
+│         test_loss         │  0.00019476360466796905   │
+└───────────────────────────┴───────────────────────────┘
+[2024-04-05 02:14:18,478][schnetpack.cli][INFO] - Best checkpoint path:
+/home/gulsum/Documents/Surrogates/schnetpack/src/runs/290afa64-f2bc-11ee-bdba-60dd8ea4dca1/checkpoints/epoch=619.ckpt

@@ -1,0 +1,276 @@
+(schnetpack_env) gulsum@gulsum-Aegis-RS:~/Documents/Surrogates/schnetpack/src$ python scripts/spktrain experiment=qm9_atomwise -cd /home/gulsum/Documents/Surrogates/schnetpack/src/schnetpack/configs | tee schnetpack/output_40_N.txt
+/home/gulsum/.local/lib/python3.10/site-packages/hydra/_internal/config_loader_impl.py:216: UserWarning: provider=hydra.searchpath in main, path=/home/gulsum/Documents/Surrogates/schnetpack/src/configs is not available.
+  warnings.warn(
+
+GULSUM
+   _____      __    _   __     __  ____             __
+  / ___/_____/ /_  / | / /__  / /_/ __ \____ ______/ /__
+  \__ \/ ___/ __ \/  |/ / _ \/ __/ /_/ / __ `/ ___/ //_/
+ ___/ / /__/ / / / /|  /  __/ /_/ ____/ /_/ / /__/ ,<
+/____/\___/_/ /_/_/ |_/\___/\__/_/    \__,_/\___/_/|_|
+
+[2024-04-25 08:26:34,737][schnetpack.cli][INFO] - Running on host GULSUM: gulsum-Aegis-RS
+⚙ Running with the following config:
+├── run
+│   └── work_dir: ${hydra:runtime.cwd}                                                                                                                                                                                         
+│       data_dir: ${run.work_dir}/data                                                                                                                                                                                         
+│       path: ${run.work_dir}/runs                                                                                                                                                                                             
+│       experiment: qm9_${globals.property}                                                                                                                                                                                    
+│       id: ${uuid:1}                                                                                                                                                                                                          
+│       ckpt_path: null                                                                                                                                                                                                        
+│                                                                                                                                                                                                                              
+├── globals
+│   └── model_path: best_model                                                                                                                                                                                                 
+│       cutoff: 5.0                                                                                                                                                                                                            
+│       lr: 0.0005                                                                                                                                                                                                             
+│       property: energy_U0                                                                                                                                                                                                    
+│       aggregation: sum                                                                                                                                                                                                       
+│                                                                                                                                                                                                                              
+├── data
+│   └── _target_: schnetpack.datasets.QM9                                                                                                                                                                                      
+│       datapath: ${run.data_dir}/qm9.db                                                                                                                                                                                       
+│       data_workdir: null                                                                                                                                                                                                     
+│       batch_size: 100                                                                                                                                                                                                        
+│       num_train: 110000                                                                                                                                                                                                      
+│       num_val: 10000                                                                                                                                                                                                         
+│       num_test: null                                                                                                                                                                                                         
+│       num_workers: 8                                                                                                                                                                                                         
+│       num_val_workers: null                                                                                                                                                                                                  
+│       num_test_workers: null                                                                                                                                                                                                 
+│       train_sampler_cls: null                                                                                                                                                                                                
+│       remove_uncharacterized: true                                                                                                                                                                                           
+│       distance_unit: Ang                                                                                                                                                                                                     
+│       property_units:                                                                                                                                                                                                        
+│         energy_U0: eV                                                                                                                                                                                                        
+│         energy_U: eV                                                                                                                                                                                                         
+│         enthalpy_H: eV                                                                                                                                                                                                       
+│         free_energy: eV                                                                                                                                                                                                      
+│         homo: eV                                                                                                                                                                                                             
+│         lumo: eV                                                                                                                                                                                                             
+│         gap: eV                                                                                                                                                                                                              
+│         zpve: eV                                                                                                                                                                                                             
+│       transforms:                                                                                                                                                                                                            
+│       - _target_: schnetpack.transform.SubtractCenterOfMass                                                                                                                                                                  
+│       - _target_: schnetpack.transform.RemoveOffsets                                                                                                                                                                         
+│         property: ${globals.property}                                                                                                                                                                                        
+│         remove_atomrefs: true                                                                                                                                                                                                
+│         remove_mean: true                                                                                                                                                                                                    
+│       - _target_: schnetpack.transform.MatScipyNeighborList                                                                                                                                                                  
+│         cutoff: ${globals.cutoff}                                                                                                                                                                                            
+│       - _target_: schnetpack.transform.CastTo32                                                                                                                                                                              
+│                                                                                                                                                                                                                              
+├── model
+│   └── representation:                                                                                                                                                                                                        
+│         radial_basis:                                                                                                                                                                                                        
+│           _target_: schnetpack.nn.radial.GaussianRBF                                                                                                                                                                         
+│           n_rbf: 20                                                                                                                                                                                                          
+│           cutoff: ${globals.cutoff}                                                                                                                                                                                          
+│         _target_: schnetpack.representation.PaiNN                                                                                                                                                                            
+│         n_atom_basis: 128                                                                                                                                                                                                    
+│         n_interactions: 3                                                                                                                                                                                                    
+│         shared_interactions: false                                                                                                                                                                                           
+│         shared_filters: false                                                                                                                                                                                                
+│         cutoff_fn:                                                                                                                                                                                                           
+│           _target_: schnetpack.nn.cutoff.CosineCutoff                                                                                                                                                                        
+│           cutoff: ${globals.cutoff}                                                                                                                                                                                          
+│       _target_: schnetpack.model.NeuralNetworkPotential                                                                                                                                                                      
+│       input_modules:                                                                                                                                                                                                         
+│       - _target_: schnetpack.atomistic.PairwiseDistances                                                                                                                                                                     
+│       output_modules:                                                                                                                                                                                                        
+│       - _target_: schnetpack.atomistic.Atomwise                                                                                                                                                                              
+│         output_key: ${globals.property}                                                                                                                                                                                      
+│         n_in: ${model.representation.n_atom_basis}                                                                                                                                                                           
+│         aggregation_mode: ${globals.aggregation}                                                                                                                                                                             
+│       postprocessors:                                                                                                                                                                                                        
+│       - _target_: schnetpack.transform.CastTo64                                                                                                                                                                              
+│       - _target_: schnetpack.transform.AddOffsets                                                                                                                                                                            
+│         property: ${globals.property}                                                                                                                                                                                        
+│         add_mean: true                                                                                                                                                                                                       
+│         add_atomrefs: true                                                                                                                                                                                                   
+│                                                                                                                                                                                                                              
+├── task
+│   └── _target_: schnetpack.AtomisticTask                                                                                                                                                                                     
+│       outputs:                                                                                                                                                                                                               
+│       - _target_: schnetpack.task.ModelOutput                                                                                                                                                                                
+│         name: ${globals.property}                                                                                                                                                                                            
+│         loss_fn:                                                                                                                                                                                                             
+│           _target_: torch.nn.MSELoss                                                                                                                                                                                         
+│         metrics:                                                                                                                                                                                                             
+│           mae:                                                                                                                                                                                                               
+│             _target_: torchmetrics.regression.MeanAbsoluteError                                                                                                                                                              
+│           rmse:                                                                                                                                                                                                              
+│             _target_: torchmetrics.regression.MeanSquaredError                                                                                                                                                               
+│             squared: false                                                                                                                                                                                                   
+│         loss_weight: 1.0                                                                                                                                                                                                     
+│       warmup_steps: 0                                                                                                                                                                                                        
+│       optimizer_cls: torch.optim.AdamW                                                                                                                                                                                       
+│       optimizer_args:                                                                                                                                                                                                        
+│         lr: ${globals.lr}                                                                                                                                                                                                    
+│         weight_decay: 0.0                                                                                                                                                                                                    
+│       scheduler_cls: schnetpack.train.ReduceLROnPlateau                                                                                                                                                                      
+│       scheduler_monitor: val_loss                                                                                                                                                                                            
+│       scheduler_args:                                                                                                                                                                                                        
+│         mode: min                                                                                                                                                                                                            
+│         factor: 0.5                                                                                                                                                                                                          
+│         patience: 75                                                                                                                                                                                                         
+│         threshold: 0.0                                                                                                                                                                                                       
+│         threshold_mode: rel                                                                                                                                                                                                  
+│         cooldown: 10                                                                                                                                                                                                         
+│         min_lr: 0.0                                                                                                                                                                                                          
+│         smoothing_factor: 0.0                                                                                                                                                                                                
+│                                                                                                                                                                                                                              
+├── trainer
+│   └── _target_: pytorch_lightning.Trainer                                                                                                                                                                                    
+│       devices: 1                                                                                                                                                                                                             
+│       min_epochs: null                                                                                                                                                                                                       
+│       max_epochs: 100000                                                                                                                                                                                                     
+│       enable_model_summary: true                                                                                                                                                                                           /home/gulsum/.local/lib/python3.10/site-packages/lightning_fabric/utilities/seed.py:40: No seed found, seed set to 1771505337
+  
+│       profiler: null                                                                                                                                                                                                         
+│       gradient_clip_val: 0                                                                                                                                                                                                   
+│       accumulate_grad_batches: 1                                                                                                                                                                                             
+│       val_check_interval: 1.0                                                                                                                                                                                                
+│       check_val_every_n_epoch: 1                                                                                                                                                                                             
+│       num_sanity_val_steps: 0                                                                                                                                                                                                
+│       fast_dev_run: false                                                                                                                                                                                                    
+│       overfit_batches: 0                                                                                                                                                                                                     
+│       limit_train_batches: 1.0                                                                                                                                                                                               
+│       limit_val_batches: 1.0                                                                                                                                                                                                 
+│       limit_test_batches: 1.0                                                                                                                                                                                                
+│       detect_anomaly: false                                                                                                                                                                                                  
+│       precision: 32                                                                                                                                                                                                          
+│       accelerator: auto                                                                                                                                                                                                      
+│       num_nodes: 1                                                                                                                                                                                                           
+│       deterministic: false                                                                                                                                                                                                   
+│       inference_mode: false                                                                                                                                                                                                  
+│                                                                                                                                                                                                                              
+├── callbacks
+│   └── model_checkpoint:                                                                                                                                                                                                      
+│         _target_: schnetpack.train.ModelCheckpoint                                                                                                                                                                           
+│         monitor: val_loss                                                                                                                                                                                                    
+│         save_top_k: 1                                                                                                                                                                                                        
+│         save_last: true                                                                                                                                                                                                      
+│         mode: min                                                                                                                                                                                                            
+│         verbose: false                                                                                                                                                                                                       
+│         dirpath: checkpoints/                                                                                                                                                                                                
+│         filename: '{epoch:02d}'                                                                                                                                                                                              
+│         model_path: ${globals.model_path}                                                                                                                                                                                    
+│       early_stopping:                                                                                                                                                                                                        
+│         _target_: pytorch_lightning.callbacks.EarlyStopping                                                                                                                                                                  
+│         monitor: val_loss                                                                                                                                                                                                    
+│         patience: 200                                                                                                                                                                                                        
+│         mode: min                                                                                                                                                                                                            
+│         min_delta: 0.0                                                                                                                                                                                                       
+│         check_on_train_epoch_end: false                                                                                                                                                                                      
+│       lr_monitor:                                                                                                                                                                                                            
+│         _target_: pytorch_lightning.callbacks.LearningRateMonitor                                                                                                                                                            
+│         logging_interval: epoch                                                                                                                                                                                              
+│       ema:                                                                                                                                                                                                                   
+│         _target_: schnetpack.train.ExponentialMovingAverage                                                                                                                                                                  
+│         decay: 0.995                                                                                                                                                                                                         
+│                                                                                                                                                                                                                              
+├── logger
+│   └── tensorboard:                                                                                                                                                                                                           
+│         _target_: pytorch_lightning.loggers.tensorboard.TensorBoardLogger                                                                                                                                                    
+│         save_dir: tensorboard/                                                                                                                                                                                               
+│         name: default                                                                                                                                                                                                        
+│                                                                                                                                                                                                                              
+└── seed
+    └── None                                                                                                                                                                                                                   
+[2024-04-25 08:26:34,760][schnetpack.cli][INFO] - Seed randomly...
+Seed set to 1771505337
+[2024-04-25 08:26:34,761][schnetpack.cli][INFO] - Instantiating datamodule <schnetpack.datasets.QM9>
+[2024-04-25 08:26:34,766][schnetpack.cli][INFO] - Instantiating model <schnetpack.model.NeuralNetworkPotential>
+[2024-04-25 08:26:34,773][schnetpack.cli][INFO] - Instantiating task <schnetpack.AtomisticTask>
+[2024-04-25 08:26:34,778][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ModelCheckpoint>
+[2024-04-25 08:26:34,779][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>
+[2024-04-25 08:26:34,780][schnetpack.cli][INFO] - Instantiating callback <pytorch_lightning.callbacks.LearningRateMonitor>
+[2024-04-25 08:26:34,780][schnetpack.cli][INFO] - Instantiating callback <schnetpack.train.ExponentialMovingAverage>
+[2024-04-25 08:26:34,780][schnetpack.cli][INFO] - Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>
+[2024-04-25 08:26:34,786][schnetpack.cli][INFO] - Instantiating trainer <pytorch_lightning.Trainer>
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+`Trainer(limit_train_batches=1.0)` was configured so 100% of the batches per epoch will be used..
+`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..
+`Trainer(limit_test_batches=1.0)` was configured so 100% of the batches will be used..
+`Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..
+[2024-04-25 08:26:34,846][schnetpack.cli][INFO] - Logging hyperparameters.
+[2024-04-25 08:26:34,878][schnetpack.cli][INFO] - Starting training for 40% nitrogen.
+You are using a CUDA device ('NVIDIA GeForce RTX 3060 Ti') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 696/696 [00:06<00:00, 100.69it/s]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name    | Type                   | Params
+---------------------------------------------------
+0 | model   | NeuralNetworkPotential | 589 K 
+1 | outputs | ModuleList             | 0     
+---------------------------------------------------
+589 K     Trainable params
+0         Non-trainable params
+589 K     Total params
+2.356     Total estimated model params size (MB)
+Epoch 643: 100%|██████████| 696/696 [00:35<00:00, 19.66it/s, v_num=0, val_loss=0.000698]
+[2024-04-25 14:34:42,730][schnetpack.cli][INFO] - Starting testing for 100% nitrogen.
+Restoring states from the checkpoint path at checkpoints/epoch=443.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at checkpoints/epoch=443.ckpt
+Testing DataLoader 0: 100%|██████████| 109/109 [00:03<00:00, 28.41it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.009889804758131504    │
+│    test_energy_U0_rmse    │    0.03194393217563629    │
+│         test_loss         │   0.0010204147547483444   │
+└───────────────────────────┴───────────────────────────┘
+[2024-04-25 14:34:47,486][schnetpack.cli][INFO] - Starting testing for 75% nitrogen.
+Restoring states from the checkpoint path at checkpoints/epoch=443.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at checkpoints/epoch=443.ckpt
+Testing DataLoader 0: 100%|██████████| 109/109 [00:04<00:00, 24.91it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.009889806620776653    │
+│    test_energy_U0_rmse    │    0.03194393217563629    │
+│         test_loss         │   0.0010204147547483444   │
+└───────────────────────────┴───────────────────────────┘
+[2024-04-25 14:34:52,621][schnetpack.cli][INFO] - Starting testing for 50% nitrogen.
+Restoring states from the checkpoint path at checkpoints/epoch=443.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at checkpoints/epoch=443.ckpt
+Testing DataLoader 0: 100%|██████████| 109/109 [00:04<00:00, 25.42it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │    0.0098898159340024     │
+│    test_energy_U0_rmse    │    0.03194393217563629    │
+│         test_loss         │   0.0010204148711636662   │
+└───────────────────────────┴───────────────────────────┘
+[2024-04-25 14:34:57,647][schnetpack.cli][INFO] - Starting testing for 25% nitrogen.
+Restoring states from the checkpoint path at checkpoints/epoch=443.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at checkpoints/epoch=443.ckpt
+Testing DataLoader 0: 100%|██████████| 109/109 [00:04<00:00, 27.03it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.009889808483421803    │
+│    test_energy_U0_rmse    │    0.03194393590092659    │
+│         test_loss         │   0.001020414987578988    │
+└───────────────────────────┴───────────────────────────┘
+[2024-04-25 14:35:02,313][schnetpack.cli][INFO] - Starting testing for 0% nitrogen.
+Restoring states from the checkpoint path at checkpoints/epoch=443.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at checkpoints/epoch=443.ckpt
+Testing DataLoader 0: 100%|██████████| 109/109 [00:04<00:00, 26.72it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    test_energy_U0_mae     │   0.009889798238873482    │
+│    test_energy_U0_rmse    │   0.031943920999765396    │
+│         test_loss         │   0.0010204141726717353   │
+└───────────────────────────┴───────────────────────────┘
+[2024-04-25 14:35:07,077][schnetpack.cli][INFO] - Best checkpoint path:
+checkpoints/epoch=443.ckpt
